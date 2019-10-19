@@ -1,0 +1,37 @@
+{
+  "name": "wc-base-typescript",
+  "version": "1.0.0",
+  "description": "Project to create web components with typescript",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --env.MODE=production",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "start": "webpack-dev-server --env.MODE=development --open",
+    "tsc": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "tx2z",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.0.4",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "prettier": "^1.18.2",
+    "ts-loader": "^6.2.0",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.6.4",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2"
+  },
+  "dependencies": {
+    "@webcomponents/webcomponentsjs": "^2.3.0",
+    "tslint-plugin-prettier": "^2.0.1"
+  }
+}
