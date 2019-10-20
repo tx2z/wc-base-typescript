@@ -26,16 +26,20 @@ export default class BaseComponent extends HTMLElement {
   }
 
   /**
-   * Add EventListeners to the Component
+   * Add EventListeners to the shadow dom of the component.
+   * It allow to listen events even if the content of the component is not yet
+   * created
    */
   private addEventListeners() {
-    const baseComponentElement = this.shadow;
-
-    baseComponentElement.addEventListener(
+    this.shadow.addEventListener(
       'click',
       event => {
         const target = event.target as HTMLElement;
 
+        /**
+         * Add the event listener to the testButton to add a message in the
+         * testMessage component's element
+         */
         if (target.id === 'testButton') {
           event.preventDefault();
           const testMessage = this.shadow.getElementById('testMessage') as HTMLElement;
