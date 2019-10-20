@@ -2,11 +2,21 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path');
+const glob = require("glob");
+
+const entryComponents = () => {
+  const entryComponents = {};
+  glob.sync("./src/components/**/index.ts").forEach((file) => {
+    const fileParts = file.split('/');
+    entryComponents[fileParts[3]] = file;
+  });
+  return entryComponents
+};
 
 module.exports = env => {
   return ({
     mode: env.MODE,
-    entry: './src/index.ts',
+    entry: entryComponents,
     devtool: env.MODE === 'development' ? 'inline-source-map' : 'none',
     devServer: {
       contentBase: './dist',
@@ -34,13 +44,14 @@ module.exports = env => {
       extensions: [ '.tsx', '.ts', '.js' ]
     },
     output: {
-      filename: 'bundle.js',
+      filename: '[name].js',
       path: path.resolve(__dirname, 'dist')
     },
     plugins: [
       new CleanWebpackPlugin(),
       new CopyPlugin([
-        { from: 'node_modules/@webcomponents/webcomponentsjs', to: 'webcomponentsjs' },
+        { from: 'node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js', to: 'webcomponentsjs/webcomponents-loader.js' },
+        { from: 'node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js', to: 'webcomponentsjs/custom-elements-es5-adapter.js' },
       ]),
       new HtmlWebpackPlugin({
         inject: 'head',

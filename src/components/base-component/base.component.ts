@@ -3,7 +3,7 @@ import prepareTemplate from '../../helpers';
 import htmlTemplate from './base.component.html';
 
 /** The BaseComponent web component */
-export class BaseComponent extends HTMLElement {
+export default class BaseComponent extends HTMLElement {
   private shadow: ShadowRoot;
 
   constructor() {
@@ -46,4 +46,3 @@ export class BaseComponent extends HTMLElement {
     );
   }
 }
-window.customElements.define('base-component', BaseComponent);
