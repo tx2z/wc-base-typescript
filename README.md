@@ -1,7 +1,7 @@
-WEB COMPONENTS BASE WITH TYPESCRIPT
-===================================
+WEB COMPONENTS GENERATOR WITH TYPESCRIPT
+========================================
 
-Project to create encapsulated web components with typescript
+Project to create stand-alone web components with typescript
 
 Uses:
 
