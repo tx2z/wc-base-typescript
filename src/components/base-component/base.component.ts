@@ -13,10 +13,10 @@ export default class BaseComponent extends HTMLElement {
     const templateElement = document.createElement('template');
 
     // Prepare template
-    const variables = {
+    const templateVariables = {
       hello: 'Hello There!',
     };
-    templateElement.innerHTML = prepareTemplate(htmlTemplate, variables, '');
+    templateElement.innerHTML = prepareTemplate(htmlTemplate, templateVariables, '');
 
     // Attach template content to the shadow dom
     this.shadow = this.attachShadow({ mode: 'closed' });
