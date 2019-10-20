@@ -1,7 +1,7 @@
 WEB COMPONENTS GENERATOR WITH TYPESCRIPT
 ========================================
 
-Project to create stand-alone web components with typescript
+Project to create stand-alone web components with typescript.
 
 Uses:
 
@@ -23,7 +23,7 @@ npm i
 
 The components are stored in "[src/components](src/components)". Create a folder with the name you want to give to your component.
 
-For a quick start, you can copy the content of the two example components in the folder:
+For a quick start, you can copy the content of the two example components in the folders:
 
 * **base-component** create a web component with no dependencies or libraries (other than the polyfills).
 
@@ -46,8 +46,8 @@ Build the components for production
 npm run build
 ```
 
-You can find you builds in the "dist" folder.
+You can find your builds in the "dist" folder.
 
 Your components will be compiled in a single js file with the same name you give to the folder in "[src/components](src/components)".
 
-The [webcomponents polyfills](https://github.com/webcomponents/polyfills) are included as well in the "dist" folder you can make use o them or load the code from a CDN such as unpkg: <https://unpkg.com/@webcomponents/webcomponentsjs@^2/>
+The [webcomponents polyfills](https://github.com/webcomponents/polyfills) are included as well in the "dist" folder, you can use them or load directly the code from a CDN such as unpkg: <https://unpkg.com/@webcomponents/webcomponentsjs@^2/>
