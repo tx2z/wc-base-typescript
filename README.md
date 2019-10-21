@@ -13,9 +13,14 @@ Uses:
 Getting started
 ---------------
 
-Fork this project to use it in your own github account or download it for local development.
+Download this project for local development of web components. You can use [degit](https://github.com/Rich-Harris/degit/) or any similar tool for convenience.
 
-Once the project is in your computer, install all npm dependencies:
+``` bash
+npm install -g degit #In case you don't have it installed
+degit tx2z/wc-base-typescript
+```
+
+Once the project is in your computer, enter the folder and install all npm dependencies:
 
 ``` bash
 npm i
