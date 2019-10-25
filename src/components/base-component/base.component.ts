@@ -22,6 +22,27 @@ export default class BaseComponent extends HTMLElement {
     this.shadow = this.attachShadow({ mode: 'closed' });
     this.shadow.appendChild(templateElement.content.cloneNode(true));
   }
+
+  /**
+   * Define witch attribunes of the custom element need to be observed
+   */
+  static get observedAttributes() {
+    return ['data-attribute'];
+  }
+
+  /**
+   * Execute every time an attribute defined in observedAttributes changes
+   * @param attr The attribute that changes
+   * @param oldValue Old value of the attribute
+   * @param newValue New value of the attribute
+   */
+  public attributeChangedCallback(attr: string, oldValue: string, newValue: string) {
+    if (attr === 'data-attribute' && oldValue !== newValue) {
+      const testAttribute = this.shadow.getElementById('attributeValue') as HTMLElement;
+      testAttribute.innerHTML = newValue;
+    }
+  }
+
   /**
    * Executed when the custom element is added to the page.
    */

@@ -15,12 +15,7 @@ export default class LithtmlComponent extends HTMLElement {
 
     // Create shadow dom
     this.shadow = this.attachShadow({ mode: 'closed' });
-  }
 
-  /**
-   * Executed when the custom element is added to the page.
-   */
-  public connectedCallback() {
     // Define the lit-html template
     const lithtmlTemplate = (data: interfaces.TemplateVariables) =>
       html`
@@ -28,6 +23,14 @@ export default class LithtmlComponent extends HTMLElement {
         <br />
         <button @click=${this.buttonClick}>Test button</button>
         <p id="testMessage"></p>
+        <p>
+          Attribute value: <span id="attributeValue">${this.dataset.attribute}</span>
+          <br />
+          <small
+            >You can change the data-attribute in the inspector or do some fancy stuf inside of
+            outside the component with JS :)</small
+          >
+        </p>
       `;
 
     /**
@@ -36,6 +39,32 @@ export default class LithtmlComponent extends HTMLElement {
      * in the template
      */
     render(lithtmlTemplate(this.templateVariables), this.shadow, { eventContext: this });
+  }
+
+  /**
+   * Define witch attribunes of the custom element need to be observed
+   */
+  static get observedAttributes() {
+    return ['data-attribute'];
+  }
+
+  /**
+   * Execute every time an attribute defined in observedAttributes changes
+   * @param attr The attribute that changes
+   * @param oldValue Old value of the attribute
+   * @param newValue New value of the attribute
+   */
+  public attributeChangedCallback(attr: string, oldValue: string, newValue: string) {
+    if (attr === 'data-attribute' && oldValue !== newValue) {
+      const testAttribute = this.shadow.getElementById('attributeValue') as HTMLElement;
+
+      const messageTemplate = () =>
+        html`
+          ${newValue}
+        `;
+
+      render(messageTemplate(), testAttribute);
+    }
   }
 
   /**
