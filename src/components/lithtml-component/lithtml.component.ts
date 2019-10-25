@@ -15,7 +15,12 @@ export default class LithtmlComponent extends HTMLElement {
 
     // Create shadow dom
     this.shadow = this.attachShadow({ mode: 'closed' });
+  }
 
+  /**
+   * Executed when the custom element is added to the page.
+   */
+  public connectedCallback() {
     // Define the lit-html template
     const lithtmlTemplate = (data: interfaces.TemplateVariables) =>
       html`

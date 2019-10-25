@@ -21,8 +21,25 @@ export default class BaseComponent extends HTMLElement {
     // Attach template content to the shadow dom
     this.shadow = this.attachShadow({ mode: 'closed' });
     this.shadow.appendChild(templateElement.content.cloneNode(true));
-
+  }
+  /**
+   * Executed when the custom element is added to the page.
+   */
+  public connectedCallback() {
     this.addEventListeners();
+  }
+  /**
+   * Executed when the custom element is removed from page.
+   */
+  public disconnectedCallback() {
+    console.log('disconected!');
+    this.shadow.removeEventListener(
+      'click',
+      event => {
+        this.eventListerners(this.shadow, event);
+      },
+      false
+    );
   }
 
   /**
@@ -34,19 +51,28 @@ export default class BaseComponent extends HTMLElement {
     this.shadow.addEventListener(
       'click',
       event => {
-        const target = event.target as HTMLElement;
-
-        /**
-         * Add the event listener to the testButton to add a message in the
-         * testMessage component's element
-         */
-        if (target.id === 'testButton') {
-          event.preventDefault();
-          const testMessage = this.shadow.getElementById('testMessage') as HTMLElement;
-          testMessage.innerHTML = 'You click the button!';
-        }
+        this.eventListerners(this.shadow, event);
       },
       false
     );
+  }
+
+  /**
+   * Function executed by an eventlistener to perform onclick action
+   * @param shadow The shadow DOM element attached to the class
+   * @param event The Event of the parent event listener
+   */
+  private eventListerners(shadow: ShadowRoot, event: Event) {
+    const target = event.target as HTMLElement;
+
+    /**
+     * Add the event listener to the testButton to add a message in the
+     * testMessage component's element
+     */
+    if (target.id === 'testButton') {
+      event.preventDefault();
+      const testMessage = shadow.getElementById('testMessage') as HTMLElement;
+      testMessage.innerHTML = 'You click the button!';
+    }
   }
 }
