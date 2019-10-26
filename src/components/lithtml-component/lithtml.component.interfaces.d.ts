@@ -6,4 +6,6 @@
  */
 export interface TemplateVariables {
   hello: string;
+  testMessage?: string;
+  attributeValue?: string;
 }
