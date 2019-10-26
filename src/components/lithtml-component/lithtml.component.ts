@@ -3,6 +3,12 @@ import * as interfaces from './lithtml.component.interfaces';
 
 /** The LithtmlComponent web component */
 export default class LithtmlComponent extends HTMLElement {
+  /**
+   * Define witch attribunes of the custom element need to be observed
+   */
+  static get observedAttributes() {
+    return ['data-attribute'];
+  }
   private shadow: ShadowRoot;
 
   // Define the variables we wil use in the component's main template
@@ -15,37 +21,13 @@ export default class LithtmlComponent extends HTMLElement {
 
     // Create shadow dom
     this.shadow = this.attachShadow({ mode: 'closed' });
-
-    // Define the lit-html template
-    const lithtmlTemplate = (data: interfaces.TemplateVariables) =>
-      html`
-        ${data.hello}
-        <br />
-        <button @click=${this.buttonClick}>Test button</button>
-        <p id="testMessage"></p>
-        <p>
-          Attribute value: <span id="attributeValue">${this.dataset.attribute}</span>
-          <br />
-          <small
-            >You can change the data-attribute in the inspector or do some fancy stuf inside of
-            outside the component with JS :)</small
-          >
-        </p>
-      `;
-
-    /**
-     * Render the lit-html teamplate and add it to the shadow dom. EventContext
-     * is assigned to this so we can execute the public functions of the class
-     * in the template
-     */
-    render(lithtmlTemplate(this.templateVariables), this.shadow, { eventContext: this });
   }
 
   /**
-   * Define witch attribunes of the custom element need to be observed
+   * Executed when the custom element is added to the page.
    */
-  static get observedAttributes() {
-    return ['data-attribute'];
+  public connectedCallback() {
+    this.render();
   }
 
   /**
@@ -56,29 +38,54 @@ export default class LithtmlComponent extends HTMLElement {
    */
   public attributeChangedCallback(attr: string, oldValue: string, newValue: string) {
     if (attr === 'data-attribute' && oldValue !== newValue) {
-      const testAttribute = this.shadow.getElementById('attributeValue') as HTMLElement;
-
-      const messageTemplate = () =>
-        html`
-          ${newValue}
-        `;
-
-      render(messageTemplate(), testAttribute);
+      this.templateVariables.attributeValue = newValue;
+      // Render the template with the changes
+      this.render();
     }
   }
 
   /**
-   * Public funtion for test purposes.
-   * Use lit-html functions to add a message in the testMessage component's element
+   * Public funtion for test purposes. This function can be called from the temaplte.
    */
   public buttonClick() {
-    const testMessage = this.shadow.getElementById('testMessage') as HTMLElement;
+    this.templateVariables.testMessage = 'You click the button!';
+    // Render the template with the changes
+    this.render();
+  }
 
-    const messageTemplate = () =>
-      html`
-        You click the button!
-      `;
+  // Define the lit-html template
+  private lithtmlTemplate = (data: interfaces.TemplateVariables) =>
+    html`
+      <style>
+        :host {
+          border: 1px black dotted;
+          display: inline-block;
+          padding: 5px;
+        }
+      </style>
+      ${data.hello}
+      <br />
+      <button @click=${this.buttonClick}>Test button</button>
+      <p>${data.testMessage}</p>
+      <p>
+        Attribute value: ${data.attributeValue}
+        <br />
+        <small
+          >You can change the data-attribute in the inspector or do some fancy stuf inside of
+          outside the component with JS :)</small
+        >
+      </p>
+    `;
 
-    render(messageTemplate(), testMessage);
+  /**
+   * Render the lit-html teamplate and add it to the shadow dom.
+   */
+  private render() {
+    /**
+     * Render the lit-html teamplate and add it to the shadow dom. EventContext
+     * is assigned to this so we can execute the public functions of the class
+     * in the template
+     */
+    render(this.lithtmlTemplate(this.templateVariables), this.shadow, { eventContext: this });
   }
 }
