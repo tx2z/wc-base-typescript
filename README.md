@@ -28,11 +28,13 @@ npm i
 
 The components are stored in "[src/components](src/components)". Create a folder with the name you want to give to your component.
 
-For a quick start, you can copy the content of the two example components in the folders:
+For a quick start, you can copy the content of the example components in the folder:
 
 * **base-component** create a web component with no dependencies or libraries (other than the polyfills).
 
 * **lithtml-component** create a web component using [lit-html](https://lit-html.polymer-project.org/) as template library.
+
+* **noshadow-component** create a custon element (not sure if it can be called a web component) without using the shadow DOM & with no dependencies or libraries (other than the polyfills).
 
 Include your defined custom element in "[public/index.html](public/index.html)" so you can test it while developing.
 
