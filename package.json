@@ -8,7 +8,8 @@
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "start": "webpack-dev-server --env.MODE=development --open",
     "tsc": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,9 @@
   "author": "tx2z",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@storybook/html": "^5.3.3",
+    "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "glob": "^7.1.6",
