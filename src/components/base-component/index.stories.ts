@@ -1,11 +1,9 @@
 import './index';
 
-export default { title: 'Button' };
+export default { title: 'Base' };
 
-export const withText = () => '<base-component data-attribute="init"></base-component>';
-
-export const withEmoji = () => {
-  const button = document.createElement('button');
-  button.innerText = '😀 😎 👍 💯';
-  return button;
+export const baseComponent = () => {
+  const component = document.createElement('base-component');
+  component.dataset.attribute = 'init';
+  return component;
 };
