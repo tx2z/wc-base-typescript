@@ -1,8 +1,9 @@
+import { withA11y } from '@storybook/addon-a11y';
 import { text, withKnobs } from '@storybook/addon-knobs';
 import './index';
 
 export default {
-  decorators: [withKnobs],
+  decorators: [withKnobs, withA11y],
   title: 'No Shadow DOM',
 };
 
