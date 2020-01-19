@@ -1,7 +1,7 @@
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    
+    addons: ['@storybook/addon-knobs/register'],
     webpackFinal: async config => {
       config.module.rules.push({
         test: /\.(ts|tsx)$/,
@@ -18,7 +18,6 @@ module.exports = {
             { from: 'node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js', to: 'webcomponentsjs/custom-elements-es5-adapter.js' },
           ]),
       );
-      //config.entry = config.entry.filter(singleEntry => !singleEntry.includes('/webpack-hot-middleware/'))
       return config;
     },
 };
