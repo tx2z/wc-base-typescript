@@ -1,7 +1,12 @@
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    addons: ['@storybook/addon-knobs/register', '@storybook/addon-a11y/register', '@storybook/addon-viewport/register'],
+    addons: [
+      '@storybook/addon-notes/register-panel',
+      '@storybook/addon-knobs/register',
+      '@storybook/addon-a11y/register',
+      '@storybook/addon-viewport/register',
+    ],
     webpackFinal: async config => {
       config.module.rules.push({
         test: /\.(ts|tsx)$/,
