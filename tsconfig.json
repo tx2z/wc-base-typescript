@@ -7,6 +7,7 @@
   "sourceMap": true,
   "allowJs": false,
   "jsx": "react",
+  "reactNamespace": "app",
   "moduleResolution": "node",
   "rootDirs": ["src", "stories"],
   "baseUrl": "src",
@@ -21,7 +22,8 @@
   "allowSyntheticDefaultImports": true,
   "experimentalDecorators": true,
   "emitDecoratorMetadata": true,
-  "esModuleInterop": true 
+  "esModuleInterop": true,
+  "importHelpers": true
 },
 "include": ["src/**/*"],
 "exclude": ["node_modules", "dist", "scripts"]
