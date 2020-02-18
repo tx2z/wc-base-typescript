@@ -12,7 +12,7 @@ export default {
   title: 'Base',
 };
 
-export const baseComponent = () => {
+export const baseComponent = (): HTMLElement => {
   const dataAttribute = text('data-atribute', 'init');
   const component = document.createElement('base-component');
   component.dataset.attribute = dataAttribute;

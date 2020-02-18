@@ -12,7 +12,7 @@ export default {
   title: 'Lit-html',
 };
 
-export const lithtmlComponent = () => {
+export const lithtmlComponent = (): HTMLElement => {
   const dataAttribute = text('data-atribute', 'init');
 
   const component = document.createElement('lithtml-component');

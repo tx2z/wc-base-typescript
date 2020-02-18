@@ -26,7 +26,7 @@ export default class BaseComponent extends HTMLElement {
   /**
    * Define witch attribunes of the custom element need to be observed
    */
-  static get observedAttributes() {
+  static get observedAttributes(): string[] {
     return ['data-attribute'];
   }
 
@@ -36,7 +36,7 @@ export default class BaseComponent extends HTMLElement {
    * @param oldValue Old value of the attribute
    * @param newValue New value of the attribute
    */
-  public attributeChangedCallback(attr: string, oldValue: string, newValue: string) {
+  public attributeChangedCallback(attr: string, oldValue: string, newValue: string): void {
     if (attr === 'data-attribute' && oldValue !== newValue) {
       const testAttribute = this.shadow.getElementById('attributeValue') as HTMLElement;
       testAttribute.innerHTML = newValue;
@@ -46,13 +46,13 @@ export default class BaseComponent extends HTMLElement {
   /**
    * Executed when the custom element is added to the page.
    */
-  public connectedCallback() {
+  public connectedCallback(): void {
     this.addEventListeners();
   }
   /**
    * Executed when the custom element is removed from page.
    */
-  public disconnectedCallback() {
+  public disconnectedCallback(): void {
     console.log('disconected!');
     this.shadow.removeEventListener(
       'click',
@@ -68,7 +68,7 @@ export default class BaseComponent extends HTMLElement {
    * It allow to listen events even if the content of the component is not yet
    * created
    */
-  private addEventListeners() {
+  private addEventListeners(): void {
     this.shadow.addEventListener(
       'click',
       event => {
@@ -83,7 +83,7 @@ export default class BaseComponent extends HTMLElement {
    * @param shadow The shadow DOM element attached to the class
    * @param event The Event of the parent event listener
    */
-  private eventListerners(shadow: ShadowRoot, event: Event) {
+  private eventListerners(shadow: ShadowRoot, event: Event): void {
     const target = event.target as HTMLElement;
 
     /**
