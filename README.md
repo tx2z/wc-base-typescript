@@ -7,8 +7,10 @@ Uses:
 * [typescript](https://www.typescriptlang.org/)
 * [webpack](https://webpack.js.org/)
 * [webcomponents polyfills](https://github.com/webcomponents/polyfills)
-* [storybook](https://storybook.js.org/) (optional)
+* [karma](https://karma-runner.github.io/)
+* [jasmine](https://jasmine.github.io/)
 * [lit-html](https://lit-html.polymer-project.org/) (optional)
+* [storybook](https://storybook.js.org/) (optional)
 
 ## Getting started
 
@@ -44,6 +46,20 @@ npm start
 ```
 
 Your components will be compiled every time you save a file.
+
+## Tests
+
+[Karma](https://karma-runner.github.io/) & [jasmine](https://jasmine.github.io/) are used as testing environment and framework.
+
+Inside the example components, there is a file ending with "**spec.ts**" where you can write your tests with typescript.
+
+Launchers for chrome and firefox are already installed and configured but you can install and use any other [karma-launcher](https://www.npmjs.com/search?q=keywords:karma-launcher).
+
+To run your test use:
+
+``` bash
+npm test
+```
 
 ## Using Storybook
 
