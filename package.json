@@ -19,11 +19,11 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.8.4",
-    "@storybook/addon-a11y": "^5.3.12",
-    "@storybook/addon-knobs": "^5.3.12",
-    "@storybook/addon-notes": "^5.3.12",
-    "@storybook/addon-viewport": "^5.3.12",
-    "@storybook/html": "^5.3.12",
+    "@storybook/addon-a11y": "^5.3.13",
+    "@storybook/addon-knobs": "^5.3.13",
+    "@storybook/addon-notes": "^5.3.13",
+    "@storybook/addon-viewport": "^5.3.13",
+    "@storybook/html": "^5.3.13",
     "@types/jasmine": "^3.5.4",
     "@typescript-eslint/eslint-plugin": "^2.20.0",
     "@typescript-eslint/parser": "^2.20.0",
@@ -48,8 +48,8 @@
     "prettier": "^1.19.1",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.5",
-    "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
