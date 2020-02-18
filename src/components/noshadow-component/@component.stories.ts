@@ -12,7 +12,7 @@ export default {
   title: 'No Shadow DOM',
 };
 
-export const noShadowDomComponent = () => {
+export const noShadowDomComponent = (): HTMLElement => {
   const dataAttribute = text('data-atribute', 'init');
 
   const component = document.createElement('noshadow-component');
