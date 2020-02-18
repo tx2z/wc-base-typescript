@@ -19,7 +19,7 @@ export default class BaseComponent extends HTMLElement {
     templateElement.innerHTML = prepareTemplate(htmlTemplate, templateVariables, '');
 
     // Attach template content to the shadow dom
-    this.shadow = this.attachShadow({ mode: 'closed' });
+    this.shadow = this.attachShadow({ mode: 'open' });
     this.shadow.appendChild(templateElement.content.cloneNode(true));
   }
 

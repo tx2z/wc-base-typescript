@@ -20,7 +20,7 @@ export default class LithtmlComponent extends HTMLElement {
     super();
 
     // Create shadow dom
-    this.shadow = this.attachShadow({ mode: 'closed' });
+    this.shadow = this.attachShadow({ mode: 'open' });
   }
 
   /**
@@ -65,10 +65,10 @@ export default class LithtmlComponent extends HTMLElement {
       </style>
       ${data.hello}
       <br />
-      <button @click=${this.buttonClick}>Test button</button>
-      <p>${data.testMessage}</p>
+      <button id="testButton" @click=${this.buttonClick}>Test button</button>
+      <p id="testMessage">${data.testMessage}</p>
       <p>
-        Attribute value: ${data.attributeValue}
+        Attribute value: <span id="attributeValue">${data.attributeValue}</span>
         <br />
         <small
           >You can change the data-attribute in the inspector or do some fancy stuf inside of
