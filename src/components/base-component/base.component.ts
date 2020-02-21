@@ -1,6 +1,7 @@
 // import * as interfaces from './base.component.interfaces';
 import prepareTemplate from '../../helpers';
 import htmlTemplate from './base.component.html';
+import stylesheet from './base.component.css';
 
 /** The BaseComponent web component */
 export default class BaseComponent extends HTMLElement {
@@ -12,11 +13,14 @@ export default class BaseComponent extends HTMLElement {
     // Add the main template to the component
     const templateElement = document.createElement('template');
 
+    // Add stylesheet
+    templateElement.innerHTML = `<style>${stylesheet}</style>`;
+
     // Prepare template
     const templateVariables = {
       hello: 'Hello There!',
     };
-    templateElement.innerHTML = prepareTemplate(htmlTemplate, templateVariables, '');
+    templateElement.innerHTML += prepareTemplate(htmlTemplate, templateVariables);
 
     // Attach template content to the shadow dom
     this.shadow = this.attachShadow({ mode: 'open' });

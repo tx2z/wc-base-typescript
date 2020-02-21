@@ -2,6 +2,7 @@
 import camelcase from 'camelcase';
 import prepareTemplate from '../../helpers';
 import htmlTemplate from './noshadow.component.html';
+import stylesheet from './noshadow.component.css';
 
 /** The NoShadowComponent web component */
 export default class NoShadowComponent extends HTMLElement {
@@ -16,6 +17,9 @@ export default class NoShadowComponent extends HTMLElement {
     // Add the main template to the component
     const templateElement = document.createElement('template');
 
+    // Add stylesheet
+    templateElement.innerHTML = `<style>${stylesheet}</style>`;
+
     // Recover all the observedAttributes so we can add them to the template
     // Remember to add the atributes to the template. All attributes are
     // converted to cameCase. ex: data-attribute => dataAttribute
@@ -29,7 +33,7 @@ export default class NoShadowComponent extends HTMLElement {
       hello: 'Hello There!',
       ...observedAttributes,
     };
-    templateElement.innerHTML = prepareTemplate(htmlTemplate, templateVariables, '');
+    templateElement.innerHTML += prepareTemplate(htmlTemplate, templateVariables, '');
 
     // Attach template content to the dom inside the element
     this.appendChild(templateElement.content.cloneNode(true));
