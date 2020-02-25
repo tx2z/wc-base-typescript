@@ -1,9 +1,17 @@
 {
-  "name": "noshadow-component",
+  "private": true,
+  "name": "@tx2z/noshadow-component",
   "version": "1.0.0",
   "description": "A base web component",
   "author": "tx2z",
   "license": "ISC",
-  "private": true
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tx2z/wc-base-typescript.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tx2z/wc-base-typescript/issues"
+  },
+  "homepage": "https://github.com/tx2z/wc-base-typescript"
 }
   
