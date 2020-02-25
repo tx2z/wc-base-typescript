@@ -5,7 +5,7 @@ Project to create stand-alone web components with typescript.
 Uses:
 
 * [typescript](https://www.typescriptlang.org/)
-* [webpack](https://webpack.js.org/)
+* [rollup](https://rollupjs.org/)
 * [webcomponents polyfills](https://github.com/webcomponents/polyfills)
 * [karma](https://karma-runner.github.io/)
 * [jasmine](https://jasmine.github.io/)
@@ -31,11 +31,11 @@ The components are stored in "[src/components](src/components)". Create a folder
 
 For a quick start, you can copy the content of the example components in the folder:
 
-* **base-component** create a web component with no dependencies or libraries (other than the polyfills).
+* **base-component** create a web component with no dependencies or libraries.
 
 * **lithtml-component** create a web component using [lit-html](https://lit-html.polymer-project.org/) as template library.
 
-* **noshadow-component** create a custom element (not sure if it can be called a web component) without using the shadow DOM & with no dependencies or libraries (other than the polyfills).
+* **noshadow-component** create a custom element (not sure if it can be called a web component) without using the shadow DOM & with no dependencies or libraries.
 
 Include your defined custom element in "[public/index.html](public/index.html)" so you can test it while developing.
 
@@ -99,9 +99,9 @@ npm run storybook-build
 
 You can find your storybook builds in the "dist-storybook" folder.
 
-***Storybook is optional. If you're not using it you can remove (or not create) the @component.stories.ts and @component.notes.md files. Even you can remove all the storybook references in the [package.json](package.json) to completely remove storybook from your project.***
+***Storybook is optional. If you're not using it you can remove (or not create) the @component.stories.ts and @component.notes.md files. Even you can remove all the storybook and webpack references in the [package.json](package.json) to completely remove storybook from your project.***
 
-## Build the components for production
+## Build the components
 
 ``` bash
 npm run build
@@ -109,6 +109,10 @@ npm run build
 
 You can find your builds in the "dist" folder.
 
-Your components will be compiled in a single js file with the same name you give to the folder in "[src/components](src/components)".
+Your components will be compiled in a js file (as [ES module](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)), to use them as modules in your application, and in a dist.js (as [iife](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)), to use them directly in browsers, with the same name you give to the folder in "[src/components](src/components)".
+
+All modules include their respective [Typescript declaration files](https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html).
+
+A **"package.json is"** created as well in every component folder to upload them separately to the NPM registry. You can change the content in the "package.json" file inside the example components.
 
 The [webcomponents polyfills](https://github.com/webcomponents/polyfills) are included as well in the "dist" folder, you can use them or load directly the code from a CDN such as unpkg: <https://unpkg.com/@webcomponents/webcomponentsjs@^2/>
