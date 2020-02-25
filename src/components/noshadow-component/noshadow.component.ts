@@ -1,6 +1,5 @@
 // import * as interfaces from './base.component.interfaces';
-import camelcase from 'camelcase';
-import prepareTemplate from '../../helpers';
+import { prepareTemplate, attrToCamel } from '../../helpers';
 import * as htmlTemplate from './noshadow.component.html';
 import * as stylesheet from './noshadow.component.css';
 
@@ -25,7 +24,7 @@ export default class NoShadowComponent extends HTMLElement {
     // converted to cameCase. ex: data-attribute => dataAttribute
     const observedAttributes: Record<string, string | null> = {};
     NoShadowComponent.observedAttributes.forEach(attribute => {
-      const key = camelcase(attribute);
+      const key = attrToCamel(attribute);
       observedAttributes[key] = this.getAttribute(attribute);
     });
     // Prepare template

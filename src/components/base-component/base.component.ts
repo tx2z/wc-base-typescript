@@ -1,5 +1,5 @@
 // import * as interfaces from './base.component.interfaces';
-import prepareTemplate from '../../helpers';
+import { prepareTemplate } from '../../helpers';
 import * as htmlTemplate from './base.component.html';
 import * as stylesheet from './base.component.css';
 
