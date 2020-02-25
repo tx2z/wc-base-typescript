@@ -10,14 +10,19 @@ import generatePackageJson from 'rollup-plugin-generate-package-json';
 import { eslint } from 'rollup-plugin-eslint';
 import clear from 'rollup-plugin-clear';
 import copy from 'rollup-plugin-copy';
-import analyze from 'rollup-plugin-analyzer';
+import serve from 'rollup-plugin-serve';
+import livereload from 'rollup-plugin-livereload';
+import filesize from 'rollup-plugin-filesize';
 
 import glob from 'glob';
 import camelcase from 'camelcase';
 
+// Outout dir
 const outDir = 'distroll';
+
 let componentsToInsert = '';
 
+// Plugins to executi only one time
 const oneTimePlugins = [
   eslint({
     throwOnError: true,
@@ -47,20 +52,35 @@ const oneTimePlugins = [
   }),
 ];
 
+// Serve and live reload in watch mode
+if (process.env.ROLLUP_WATCH) {
+  oneTimePlugins.push(
+    serve({
+      open: true,
+      contentBase: outDir,
+    })
+  );
+  oneTimePlugins.push(livereload({ watch: outDir }));
+}
+
+// Compile components separately
 const components = glob.sync('./src/components/**/index.ts').map((file, i, arr) => {
-  const fileParts = file.split('/');
-  const componentName = camelcase(fileParts[3]);
+  const componentName = camelcase(file.split('/')[3]);
   const componentPath = file.replace('/index.ts', '');
   const outputJs = file.replace('src', outDir).replace('index.ts', componentName + '.js');
   const outputJsDist = file.replace('src', outDir).replace('index.ts', componentName + '.dist.js');
 
-  componentsToInsert += `<script src="${outputJs.replace('./distroll/', '')}"></script>`;
+  componentsToInsert += `<script type="module" src="${outputJs.replace(
+    './distroll/',
+    ''
+  )}"></script>`;
 
   // Create package.json for the component
   const pkg = require(componentPath + '/package.json');
   pkg.main = componentName + '.js';
   pkg.module = componentName + '.js';
   pkg.type = 'module';
+
   // inser one time plugins in last iteration
   let plugins = [];
   if (arr.length - 1 === i) {
@@ -112,10 +132,13 @@ const components = glob.sync('./src/components/**/index.ts').map((file, i, arr) 
         outputFolder: componentPath.replace('src', outDir),
         baseContents: pkg,
       }),
-      analyze({
-        summaryOnly: true,
+      filesize({
+        showMinifiedSize: false,
       }),
     ],
+    watch: {
+      include: 'src/**',
+    },
   };
 
   return COMPONENT;
