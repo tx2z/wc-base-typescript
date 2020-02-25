@@ -1,7 +1,12 @@
+const ts = require('@wessberg/rollup-plugin-ts');
+const html = require('rollup-plugin-html');
+const postcss = require('rollup-plugin-postcss-config');
+const { string } = require('rollup-plugin-string');
+const resolve = require('@rollup/plugin-node-resolve');
+const commonjs = require('@rollup/plugin-commonjs');
+
 // Karma configuration
 // Generated on Sun Feb 16 2020 01:08:31 GMT+0100 (Central European Standard Time)
-const webpackConfig = require('./webpack.karma.config');
-
 module.exports = function(config) {
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -12,7 +17,7 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
 
     // list of files / patterns to load in the browser
-    files: ['src/components/**/*.spec.ts'],
+    files: [{ pattern: 'src/components/**/*.spec.ts', watched: false }],
 
     // list of files / patterns to exclude
     exclude: [],
@@ -20,13 +25,40 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'src/components/**/*.ts': ['webpack'],
+      'src/components/**/*.ts': ['rollup'],
     },
-    webpack: {
-      module: webpackConfig.module,
-      resolve: webpackConfig.resolve,
-      mode: webpackConfig.mode,
-      devtool: webpackConfig.mode,
+    rollupPreprocessor: {
+      /**
+       * This is just a normal Rollup config object,
+       * except that `input` is handled for you.
+       */
+      plugins: [
+        commonjs(),
+        resolve(),
+        ts(),
+        html({
+          include: 'src/components/**/*.html',
+          htmlMinifierOptions: {
+            collapseWhitespace: true,
+            collapseBooleanAttributes: true,
+            conservativeCollapse: true,
+            removeComments: true,
+          },
+        }),
+        postcss({
+          include: 'src/components/**/*.css',
+          exclude: 'node_modules/**',
+        }),
+        string({
+          include: 'src/components/**/*.css',
+          exclude: 'node_modules/**',
+        }),
+      ],
+      output: {
+        format: 'iife', // Helps prevent naming collisions.
+        name: 'components', // Required for 'iife' format.
+        sourcemap: 'inline', // Sensible for testing.
+      },
     },
 
     // test results reporter to use

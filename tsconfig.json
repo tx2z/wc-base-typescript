@@ -22,7 +22,7 @@
   "experimentalDecorators": true,
   "emitDecoratorMetadata": true,
   "esModuleInterop": true,
-  "types" : ["node"],
+  "types" : ["node", "jasmine"],
 },
 "include": ["src/**/*"],
 "exclude": ["node_modules", "dist", "scripts"]
