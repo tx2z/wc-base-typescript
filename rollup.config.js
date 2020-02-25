@@ -18,7 +18,7 @@ import glob from 'glob';
 import camelcase from 'camelcase';
 
 // Outout dir
-const outDir = 'distroll';
+const outDir = 'dist';
 
 let componentsToInsert = '';
 
@@ -71,7 +71,7 @@ const components = glob.sync('./src/components/**/index.ts').map((file, i, arr) 
   const outputJsDist = file.replace('src', outDir).replace('index.ts', componentName + '.dist.js');
 
   componentsToInsert += `<script type="module" src="${outputJs.replace(
-    './distroll/',
+    `./${outDir}/`,
     ''
   )}"></script>`;
 

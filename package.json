@@ -8,10 +8,8 @@
     "build": "rollup -c",
     "lint": "eslint 'src/**/*.ts'",
     "test": "karma start karma.conf.js",
-    "storybook": "start-storybook --debug-webpack",
-    "storybook-build": "build-storybook -c .storybook -o dist-storybook",
-    "w_build": "webpack --env.MODE=production",
-    "w_start": "webpack-dev-server --env.MODE=development --open"
+    "storybook": "start-storybook",
+    "storybook-build": "build-storybook -c .storybook -o dist-storybook"
   },
   "repository": {
     "type": "git",
@@ -34,16 +32,12 @@
     "@typescript-eslint/parser": "^2.20.0",
     "@wessberg/rollup-plugin-ts": "^1.2.17",
     "babel-loader": "^8.0.6",
-    "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
-    "css-loader": "^3.4.2",
     "cssnano": "^4.1.10",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
     "glob": "^7.1.6",
-    "html-loader": "^0.5.5",
-    "html-webpack-plugin": "^3.2.0",
     "karma": "^4.4.1",
     "karma-chrome-launcher": "^3.1.0",
     "karma-cli": "^2.0.0",
@@ -73,10 +67,7 @@
     "rollup-plugin-terser": "^5.2.0",
     "to-string-loader": "^1.1.6",
     "ts-loader": "^6.2.1",
-    "typescript": "^3.8.2",
-    "webpack": "^4.41.6",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "typescript": "^3.8.2"
   },
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^2.4.1"
