@@ -1,7 +1,7 @@
 // import * as interfaces from './base.component.interfaces';
 import prepareTemplate from '../../helpers';
-import htmlTemplate from './base.component.html';
-import stylesheet from './base.component.css';
+import * as htmlTemplate from './base.component.html';
+import * as stylesheet from './base.component.css';
 
 /** The BaseComponent web component */
 export default class BaseComponent extends HTMLElement {
@@ -14,13 +14,13 @@ export default class BaseComponent extends HTMLElement {
     const templateElement = document.createElement('template');
 
     // Add stylesheet
-    templateElement.innerHTML = `<style>${stylesheet}</style>`;
+    templateElement.innerHTML = `<style>${stylesheet.default}</style>`;
 
     // Prepare template
     const templateVariables = {
       hello: 'Hello There!',
     };
-    templateElement.innerHTML += prepareTemplate(htmlTemplate, templateVariables);
+    templateElement.innerHTML += prepareTemplate(htmlTemplate.default, templateVariables);
 
     // Attach template content to the shadow dom
     this.shadow = this.attachShadow({ mode: 'open' });

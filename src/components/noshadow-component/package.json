@@ -1,0 +1,9 @@
+{
+  "name": "noshadow-component",
+  "version": "1.0.0",
+  "description": "A base web component",
+  "author": "tx2z",
+  "license": "ISC",
+  "private": true
+}
+  

@@ -1,6 +1,6 @@
 import { html, render, TemplateResult } from 'lit-html';
 import * as interfaces from './lithtml.component.interfaces';
-import stylesheet from './lithtml.component.css';
+import * as stylesheet from './lithtml.component.css';
 
 /** The LithtmlComponent web component */
 export default class LithtmlComponent extends HTMLElement {
@@ -63,7 +63,7 @@ export default class LithtmlComponent extends HTMLElement {
     const lithtmlTemplate = (data: interfaces.TemplateVariables): TemplateResult =>
       html`
         <style>
-          ${stylesheet}
+          ${stylesheet.default}
         </style>
         ${data.hello}
         <br />

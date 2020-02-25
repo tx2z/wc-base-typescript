@@ -16,6 +16,9 @@ module.exports = {
     "rules": {
         "prettier/prettier": "error"
     },
+    "parserOptions": {
+        "sourceType": "module"
+    },
     "overrides": [
       {
         "files": ["**/*.ts", "**/*.tsx"],
