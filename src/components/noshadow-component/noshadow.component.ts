@@ -54,7 +54,7 @@ export default class NoShadowComponent extends HTMLElement {
   }
 
   /**
-   * Define witch attribunes of the custom element need to be observed
+   * Define witch attributes of the custom element need to be observed
    */
   static get observedAttributes(): string[] {
     return ['data-attribute'];
@@ -93,7 +93,6 @@ export default class NoShadowComponent extends HTMLElement {
 
   /**
    * Function executed by an eventlistener to perform onclick action
-   * @param shadow The shadow DOM element attached to the class
    * @param event The Event of the parent event listener
    */
   private eventListerners(event: Event): void {

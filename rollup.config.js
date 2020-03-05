@@ -115,7 +115,6 @@ const components = glob.sync('./src/components/**/index.ts').map((file, i, arr) 
         htmlMinifierOptions: {
           collapseWhitespace: true,
           collapseBooleanAttributes: true,
-          conservativeCollapse: true,
           removeComments: true,
         },
       }),
@@ -131,6 +130,14 @@ const components = glob.sync('./src/components/**/index.ts').map((file, i, arr) 
         inputFolder: componentPath,
         outputFolder: componentPath.replace('src', outDir),
         baseContents: pkg,
+      }),
+      copy({
+        targets: [
+          {
+            src: componentPath + '/README.md',
+            dest: componentPath.replace('src', outDir),
+          },
+        ],
       }),
       filesize({
         showMinifiedSize: false,

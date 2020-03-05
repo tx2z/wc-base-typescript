@@ -79,11 +79,11 @@ This is a standard storybook installation. You can add other [addons](https://gi
 
 ### Create stories
 
-There are two files inside the example components that start by a "@" and are only used by storybook.
+There are two files inside the example components that are used by storybook.
 
 * **@component.stories.ts**: Is the file to create a story for your component. You can check storybook documentation about how to create stories starting [here](https://storybook.js.org/docs/guides/guide-html/#step-4-write-your-stories)
 
-* **@component.notes.md**: It's used to add documentation for your component using the [Notes](https://github.com/storybookjs/storybook/tree/master/addons/notes) storybook addon.
+* **README.md**: It's used to add documentation for your component using the [Notes](https://github.com/storybookjs/storybook/tree/master/addons/notes) storybook addon.
 
 Storybook will use these two files to generate the stories and the documentation. Once these two files are present run storybook with:
 
@@ -113,6 +113,8 @@ Your components will be compiled in a js file (as [ES module](https://developer.
 
 All modules include their respective [Typescript declaration files](https://www.typescriptlang.org/docs/handbook/declaration-files/introduction.html).
 
-A **"package.json is"** created as well in every component folder to upload them separately to the NPM registry. You can change the content in the "package.json" file inside the example components.
-
 The [webcomponents polyfills](https://github.com/webcomponents/polyfills) are included as well in the "dist" folder, you can use them or load directly the code from a CDN such as unpkg: <https://unpkg.com/@webcomponents/webcomponentsjs@^2/>
+
+## Publish component to NPM
+
+A **README.md** and a **"package.json"** are created as well in every component folder, so you can upload them separately to the NPM registry. You can change the content in the "package.json" file inside the example components.
