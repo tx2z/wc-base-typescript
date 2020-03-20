@@ -14,7 +14,13 @@ Uses:
 
 ## Getting started
 
-Download this project for local development of web components. You can use [degit](https://github.com/Rich-Harris/degit/) or any similar tool for convenience.
+Download this project for local development of web components:
+
+Click the "Clone this template" button on the github page and then clone your new repo it in your local machine.
+
+OR
+
+Use [degit](https://github.com/Rich-Harris/degit/) or any similar tool.
 
 ``` bash
 npm install -g degit #In case you don't have it installed
