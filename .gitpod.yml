@@ -1,6 +1,8 @@
 tasks:
-  - init: npm install && npm run build
-    command: npm run start
+  - init: npm install
+
+ports:
+  - port: 10001
 
 vscode:
   extensions:
