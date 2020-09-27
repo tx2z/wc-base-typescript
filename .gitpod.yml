@@ -1,3 +1,10 @@
 tasks:
   - init: npm install && npm run build
     command: npm run start
+
+vscode:
+  extensions:
+    - dbaeumer.vscode-eslint@2.1.8:02aHhbJ0Q4aGdjHXlTdVKg==
+    - esbenp.prettier-vscode@5.6.0:o6BL3Pchy5KVBxQAzrFZ2A==
+    - christian-kohler.npm-intellisense@1.2.1:vghMIRDy8/ygZPJWq/9oEQ==
+    - eg2.vscode-npm-script@0.3.11:Np1+d2YoqckGfeIuPylSEw==
