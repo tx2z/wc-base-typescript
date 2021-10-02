@@ -1,11 +1,13 @@
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
+    stories: ['../src/components/**/*.stories.ts'],
     addons: [
-      '@storybook/addon-notes/register-panel',
-      '@storybook/addon-knobs/register',
-      '@storybook/addon-a11y/register',
-      '@storybook/addon-viewport/register',
+      '@storybook/addon-docs',
+      '@storybook/addon-knobs',
+      '@storybook/addon-a11y',
+      '@storybook/addon-viewport',
+      '@storybook/addon-postcss',
     ],
     webpackFinal: async config => {
       // overwrite css rule
@@ -26,10 +28,12 @@ module.exports = {
       );
       config.resolve.extensions.push('.ts', '.tsx', '.js');
       config.plugins.push(
-        new CopyPlugin([
+        new CopyPlugin({
+          patterns:  [
             { from: 'node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js', to: 'webcomponentsjs/webcomponents-loader.js' },
             /*{ from: 'node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js', to: 'webcomponentsjs/custom-elements-es5-adapter.js' },*/
-          ]),
+          ]
+          }),
       );
       return config;
     },
