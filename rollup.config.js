@@ -1,4 +1,4 @@
-import ts from '@wessberg/rollup-plugin-ts';
+import ts from 'rollup-plugin-ts';
 import html from 'rollup-plugin-html';
 import postcss from 'rollup-plugin-postcss-config';
 import { string } from 'rollup-plugin-string';

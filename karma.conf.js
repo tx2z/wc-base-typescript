@@ -1,4 +1,4 @@
-const ts = require('@wessberg/rollup-plugin-ts');
+const ts = require('rollup-plugin-ts');
 const html = require('rollup-plugin-html');
 const postcss = require('rollup-plugin-postcss-config');
 const { string } = require('rollup-plugin-string');
