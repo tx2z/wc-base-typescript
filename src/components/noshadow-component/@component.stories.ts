@@ -7,7 +7,9 @@ import notes from './README.md';
 export default {
   decorators: [withKnobs, withA11y],
   parameters: {
-    notes: { notes },
+    docs: {
+      description: { component: notes },
+    },
   },
   title: 'No Shadow DOM',
 };
