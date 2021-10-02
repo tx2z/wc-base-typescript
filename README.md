@@ -79,7 +79,7 @@ Storybook for HTML is used and tuned so no further configuration is needed to us
 
 * [A11y](https://github.com/storybookjs/storybook/tree/master/addons/a11y): Helps to make your web components more accessible.
 
-* [Notes](https://github.com/storybookjs/storybook/tree/master/addons/notes): Allows to write notes or documentation for your web components.
+* [Docs](https://github.com/storybookjs/storybook/tree/master/addons/docs): Allows to write notes or documentation for your web components.
 
 This is a standard storybook installation. You can add other [addons](https://github.com/storybookjs/storybook/tree/master/addons/) or configurations that suit your needs.
 
@@ -89,7 +89,7 @@ There are two files inside the example components that are used by storybook.
 
 * **@component.stories.ts**: Is the file to create a story for your component. You can check storybook documentation about how to create stories starting [here](https://storybook.js.org/docs/guides/guide-html/#step-4-write-your-stories)
 
-* **README.md**: It's used to add documentation for your component using the [Notes](https://github.com/storybookjs/storybook/tree/master/addons/notes) storybook addon.
+* **README.md**: It's used to add documentation for your component using the [Docs](https://github.com/storybookjs/storybook/tree/master/addons/docs) storybook add-on.
 
 Storybook will use these two files to generate the stories and the documentation. Once these two files are present run storybook with:
 
@@ -105,7 +105,7 @@ npm run storybook-build
 
 You can find your storybook builds in the "dist-storybook" folder.
 
-***Storybook is optional. If you're not using it you can remove (or not create) the @component.stories.ts and @component.notes.md files. Even you can remove all the storybook and webpack references in the [package.json](package.json) to completely remove storybook from your project.***
+***Storybook is optional. If you're not using it you can remove (or not create) the @component.stories.ts file. Even you can remove all the storybook and webpack references in the [package.json](package.json) to completely remove storybook from your project.***
 
 ## Build the components
 
