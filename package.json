@@ -26,7 +26,7 @@
     "@storybook/addon-knobs": "^6.3.1",
     "@storybook/addon-postcss": "^2.0.0",
     "@storybook/addon-viewport": "^6.3.9",
-    "@storybook/html": "^6.5.16",
+    "@storybook/html": "^7.0.4",
     "@types/jasmine": "^3.5.14",
     "@types/node": "^13.13.21",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
