@@ -1,5 +1,4 @@
 import typescript from '@rollup/plugin-typescript';
-import html from 'rollup-plugin-html';
 import postcss from 'rollup-plugin-postcss';
 import { string } from 'rollup-plugin-string';
 import resolve from '@rollup/plugin-node-resolve';
@@ -10,7 +9,6 @@ import clear from 'rollup-plugin-clear';
 import copy from 'rollup-plugin-copy';
 import serve from 'rollup-plugin-serve';
 import livereload from 'rollup-plugin-livereload';
-import filesize from 'rollup-plugin-filesize';
 
 import { globSync } from 'glob';
 import camelcase from 'camelcase';
@@ -115,14 +113,6 @@ const components = globSync('src/components/**/index.ts').map((file, i, arr) => 
         declarationDir: componentPath.replace('src', outDir),
         exclude: ['**/*.stories.ts', '**/*.spec.ts'],
       }),
-      html({
-        include: componentPath + '/*.html',
-        htmlMinifierOptions: {
-          collapseWhitespace: true,
-          collapseBooleanAttributes: true,
-          removeComments: true,
-        },
-      }),
       postcss({
         include: componentPath + '/*.css',
         exclude: 'node_modules/**',
@@ -130,7 +120,7 @@ const components = globSync('src/components/**/index.ts').map((file, i, arr) => 
         extract: false,
       }),
       string({
-        include: componentPath + '/*.css',
+        include: [componentPath + '/*.html', componentPath + '/*.css'],
         exclude: 'node_modules/**',
       }),
       generatePackageJson({
@@ -145,9 +135,6 @@ const components = globSync('src/components/**/index.ts').map((file, i, arr) => 
             dest: componentPath.replace('src', outDir),
           },
         ],
-      }),
-      filesize({
-        showMinifiedSize: false,
       }),
     ],
     watch: {

@@ -1,6 +1,4 @@
 const typescript = require('@rollup/plugin-typescript');
-const html = require('rollup-plugin-html');
-const postcss = require('rollup-plugin-postcss');
 const { string } = require('rollup-plugin-string');
 const resolve = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
@@ -39,17 +37,8 @@ module.exports = function(config) {
           outDir: '.karma-rollup-tmp',
           declaration: false,
         }),
-        html({
-          include: 'src/components/**/*.html',
-          htmlMinifierOptions: {
-            collapseWhitespace: true,
-            collapseBooleanAttributes: true,
-            conservativeCollapse: true,
-            removeComments: true,
-          },
-        }),
         string({
-          include: 'src/components/**/*.css',
+          include: ['src/components/**/*.html', 'src/components/**/*.css'],
           exclude: 'node_modules/**',
         }),
       ],
