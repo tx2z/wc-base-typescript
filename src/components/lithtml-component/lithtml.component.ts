@@ -1,4 +1,4 @@
-import { html, render, TemplateResult } from 'lit-html';
+import { html, render, TemplateResult } from 'lit';
 import * as interfaces from './lithtml.component.interfaces';
 import * as stylesheet from './lithtml.component.css';
 
@@ -47,42 +47,40 @@ export default class LithtmlComponent extends HTMLElement {
 
   /**
    * Public funtion for test purposes. This function can be called from the temaplte.
+   * Arrow function to ensure correct 'this' context in template event handlers.
    */
-  public buttonClick(): void {
+  public buttonClick = (): void => {
     this.templateVariables.testMessage = 'You click the button!';
     // Render the template with the changes
     this.render();
-  }
+  };
 
   /**
    * Render the lit-html teamplate and add it to the shadow dom.
    */
   private render(): void {
-    const { buttonClick } = this;
     // Define the lit-html template
-    const lithtmlTemplate = (data: interfaces.TemplateVariables): TemplateResult =>
-      html`
-        <style>
-          ${stylesheet.default}
-        </style>
-        ${data.hello}
+    const lithtmlTemplate = (data: interfaces.TemplateVariables): TemplateResult => html`
+      <style>
+        ${stylesheet.default}
+      </style>
+      ${data.hello}
+      <br />
+      <button id="testButton" @click=${this.buttonClick}>Test button</button>
+      <p id="testMessage">${data.testMessage}</p>
+      <p>
+        Attribute value: <span id="attributeValue">${data.attributeValue}</span>
         <br />
-        <button id="testButton" @click=${buttonClick}>Test button</button>
-        <p id="testMessage">${data.testMessage}</p>
-        <p>
-          Attribute value: <span id="attributeValue">${data.attributeValue}</span>
-          <br />
-          <small
-            >You can change the data-attribute in the inspector or do some fancy stuf inside of
-            outside the component with JS :)</small
-          >
-        </p>
-      `;
+        <small
+          >You can change the data-attribute in the inspector or do some fancy stuf inside of
+          outside the component with JS :)</small
+        >
+      </p>
+    `;
     /**
-     * Render the lit-html teamplate and add it to the shadow dom. EventContext
-     * is assigned to this so we can execute the public functions of the class
-     * in the template
+     * Render the lit template and add it to the shadow dom.
+     * Methods are bound in constructor to ensure correct 'this' context.
      */
-    render(lithtmlTemplate(this.templateVariables), this.shadow, { eventContext: this });
+    render(lithtmlTemplate(this.templateVariables), this.shadow);
   }
 }

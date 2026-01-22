@@ -23,7 +23,7 @@ export default class NoShadowComponent extends HTMLElement {
     // Remember to add the atributes to the template. All attributes are
     // converted to cameCase. ex: data-attribute => dataAttribute
     const observedAttributes: Record<string, string | null> = {};
-    NoShadowComponent.observedAttributes.forEach(attribute => {
+    NoShadowComponent.observedAttributes.forEach((attribute) => {
       const key = attrToCamel(attribute);
       observedAttributes[key] = this.getAttribute(attribute);
     });
@@ -46,7 +46,7 @@ export default class NoShadowComponent extends HTMLElement {
     console.log('disconected!');
     this.removeEventListener(
       'click',
-      event => {
+      (event) => {
         this.eventListerners(event);
       },
       false
@@ -84,7 +84,7 @@ export default class NoShadowComponent extends HTMLElement {
   private addEventListeners(): void {
     this.addEventListener(
       'click',
-      event => {
+      (event) => {
         this.eventListerners(event);
       },
       false

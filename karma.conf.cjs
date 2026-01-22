@@ -1,12 +1,11 @@
-const ts = require('rollup-plugin-ts');
+const typescript = require('@rollup/plugin-typescript');
 const html = require('rollup-plugin-html');
-const postcss = require('rollup-plugin-postcss-config');
+const postcss = require('rollup-plugin-postcss');
 const { string } = require('rollup-plugin-string');
 const resolve = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
 
 // Karma configuration
-// Generated on Sun Feb 16 2020 01:08:31 GMT+0100 (Central European Standard Time)
 module.exports = function(config) {
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -35,7 +34,11 @@ module.exports = function(config) {
       plugins: [
         commonjs(),
         resolve(),
-        ts(),
+        typescript({
+          tsconfig: './tsconfig.json',
+          outDir: '.karma-rollup-tmp',
+          declaration: false,
+        }),
         html({
           include: 'src/components/**/*.html',
           htmlMinifierOptions: {
@@ -44,10 +47,6 @@ module.exports = function(config) {
             conservativeCollapse: true,
             removeComments: true,
           },
-        }),
-        postcss({
-          include: 'src/components/**/*.css',
-          exclude: 'node_modules/**',
         }),
         string({
           include: 'src/components/**/*.css',
@@ -58,6 +57,7 @@ module.exports = function(config) {
         format: 'iife', // Helps prevent naming collisions.
         name: 'components', // Required for 'iife' format.
         sourcemap: 'inline', // Sensible for testing.
+        dir: '.karma-rollup-tmp', // Output dir must be outside src for Rollup 4
       },
     },
 

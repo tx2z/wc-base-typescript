@@ -60,7 +60,7 @@ export default class BaseComponent extends HTMLElement {
     console.log('disconected!');
     this.shadow.removeEventListener(
       'click',
-      event => {
+      (event) => {
         this.eventListerners(this.shadow, event);
       },
       false
@@ -75,7 +75,7 @@ export default class BaseComponent extends HTMLElement {
   private addEventListeners(): void {
     this.shadow.addEventListener(
       'click',
-      event => {
+      (event) => {
         this.eventListerners(this.shadow, event);
       },
       false

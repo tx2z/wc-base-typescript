@@ -1,23 +1,28 @@
-import { withA11y } from '@storybook/addon-a11y';
-import { text, withKnobs } from '@storybook/addon-knobs';
 import './index';
-
 import notes from './README.md';
 
 export default {
-  decorators: [withKnobs, withA11y],
+  title: 'No Shadow DOM',
   parameters: {
     docs: {
       description: { component: notes },
     },
   },
-  title: 'No Shadow DOM',
+  argTypes: {
+    dataAttribute: {
+      control: 'text',
+      description: 'The data-attribute value',
+    },
+  },
 };
 
-export const noShadowDomComponent = (): HTMLElement => {
-  const dataAttribute = text('data-atribute', 'init');
-
-  const component = document.createElement('noshadow-component');
-  component.dataset.attribute = dataAttribute;
-  return component;
+export const NoShadowDomComponent = {
+  args: {
+    dataAttribute: 'init',
+  },
+  render: (args: { dataAttribute: string }): HTMLElement => {
+    const component = document.createElement('noshadow-component');
+    component.dataset.attribute = args.dataAttribute;
+    return component;
+  },
 };
