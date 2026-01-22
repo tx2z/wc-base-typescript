@@ -9,7 +9,7 @@ Uses:
 * [webcomponents polyfills](https://github.com/webcomponents/polyfills)
 * [karma](https://karma-runner.github.io/)
 * [jasmine](https://jasmine.github.io/)
-* [lit-html](https://lit-html.polymer-project.org/) (optional)
+* [lit](https://lit.dev/) (optional)
 * [storybook](https://storybook.js.org/) (optional)
 
 ## Getting started
@@ -39,7 +39,7 @@ For a quick start, you can copy the content of the example components in the fol
 
 * **base-component** create a web component with no dependencies or libraries.
 
-* **lithtml-component** create a web component using [lit-html](https://lit-html.polymer-project.org/) as template library.
+* **lithtml-component** create a web component using [lit](https://lit.dev/) as template library.
 
 * **noshadow-component** create a custom element (not sure if it can be called a web component) without using the shadow DOM & with no dependencies or libraries.
 
@@ -73,15 +73,11 @@ You can optionally use [storybook](https://storybook.js.org/) to develop, docume
 
 Storybook for HTML is used and tuned so no further configuration is needed to use it for your components. The following storybook addons are included:
 
-* [Knobs](https://github.com/storybookjs/storybook/tree/master/addons/knobs): Allows edit web components' props dynamically using the Storybook UI.
+* [Essentials](https://storybook.js.org/docs/essentials/introduction): Includes Controls (edit props dynamically), Viewport (responsive testing), Docs (documentation), Actions, and more.
 
-* [Viewport](https://github.com/storybookjs/storybook/tree/master/addons/viewport): Allows web components to be displayed in different sizes and layouts in Storybook. This helps build responsive web components inside of Storybook.
+* [A11y](https://storybook.js.org/docs/writing-tests/accessibility-testing): Helps to make your web components more accessible.
 
-* [A11y](https://github.com/storybookjs/storybook/tree/master/addons/a11y): Helps to make your web components more accessible.
-
-* [Docs](https://github.com/storybookjs/storybook/tree/master/addons/docs): Allows to write notes or documentation for your web components.
-
-This is a standard storybook installation. You can add other [addons](https://github.com/storybookjs/storybook/tree/master/addons/) or configurations that suit your needs.
+This is a standard storybook installation. You can add other [addons](https://storybook.js.org/integrations/) or configurations that suit your needs.
 
 ### Create stories
 
