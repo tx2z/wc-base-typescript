@@ -62,6 +62,7 @@ const components = globSync('src/components/**/index.ts').map((file, i, arr) => 
   const pkg = require(join(__dirname, componentPath, 'package.json'));
   pkg.main = `${componentName}.js`;
   pkg.module = `${componentName}.js`;
+  pkg.types = `${componentPath.replace('src/', '')}/index.d.ts`;
   pkg.type = 'module';
 
   return {
